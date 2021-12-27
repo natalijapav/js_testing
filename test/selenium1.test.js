@@ -24,7 +24,7 @@ describe('Maths test', function() {
 });
 
 describe('Maths test', function() {
-   it('tEST IF 2-1=1', function() {
+   it('TEST IF 2-1=1', function() {
       
       
       assert.equal(MyMath.sub(2,1), 1);
