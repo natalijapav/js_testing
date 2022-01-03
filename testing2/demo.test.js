@@ -19,6 +19,23 @@ describe('Demo QA Tests', function() {
         return driver.quit();
     });
 
+    it('Opens demoqa.com homepage', async function() {
+        await driver.get('http://demoqa.com/');
+
+        expect(await driver.findElement(By.css('h5')).getText()).to.contain('Elements');
+
+    });
+    
+    it('Opens Elements page', async function(){
+
+        const clickPage = await driver.findElement(By.xpath('//h5[contains(.,"Elements")]/parent::div[contains(@class, "card")]')
+        );
+        await clickPage.click();
+
+        expect(await driver.getCurrentUrl()).to.eq('https://demoqa.com/elements');
+
+
+    });
     
 
 
