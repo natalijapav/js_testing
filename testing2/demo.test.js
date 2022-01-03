@@ -20,9 +20,9 @@ describe('Demo QA Tests', function() {
     });
 
     it('Opens demoqa.com homepage', async function() {
-        await driver.get('http://demoqa.com/');
+        await driver.get('https://demoqa.com/');
 
-        expect(await driver.findElement(By.css('h5')).getText()).to.contain('Elements');
+        expect(await driver.getCurrentUrl()).to.eq('https://demoqa.com/');
 
     });
     
@@ -37,6 +37,33 @@ describe('Demo QA Tests', function() {
 
     });
     
+    it('Opens textbox page, fills the form and submits', async function(){
+
+
+        const textP = await driver.findElement(By.id('item-0'))
+        await textP.click();
+
+        expect(await driver.findElement(By.className('main-header')).getText()).to.eq('Text Box');
+
+
+        const name = await driver.findElement(By.id('userName'));
+        name.sendKeys('nata');
+
+        const email = await driver.findElement(By.id('userEmail'));
+        email.sendKeys('natatata@example.local');
+
+        const trenutnaAdresa = await driver.findElement(By.id('currentAddress'));
+        trenutnaAdresa.sendKeys('trenutna');
+
+        const trajnaAdresa = await driver.findElement(By.id('permanentAddress'));
+        trajnaAdresa.sendKeys('Trajna');
+
+        const submit = await driver.findElement(By.id('submit'));
+        await submit.click();
+
+
+    });
+
 
 
 
